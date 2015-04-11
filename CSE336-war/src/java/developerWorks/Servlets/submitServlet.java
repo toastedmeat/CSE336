@@ -5,6 +5,7 @@
  */
 package developerWorks.Servlets;
 
+import developerWorks.beans.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,13 +33,28 @@ public class submitServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            User formUser = new User();
+            formUser.setFirstName(request.getParameter("FName"));
+            formUser.setLastName(request.getParameter("LName"));
+            formUser.setEmail(request.getParameter("UserID"));
+            formUser.setPassword(request.getParameter("Password"));
+            formUser.setDisplayName(request.getParameter("alias"));
+            formUser.setCountry(request.getParameter("CountryOfRes"));
+            formUser.setLanguage(request.getParameter("Language"));
+            formUser.setSecurityQuestion(request.getParameter("SecurityQues"));
+            formUser.setSecurityAnswer(request.getParameter("SecurityAns"));
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet submitServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet submitServlet at " + request.getContextPath() + "</h1>");
+            if(formUser.isValid()){
+                response.sendRedirect("submitPage.jsp");
+            } else {
+                out.println("<h1>Email is: Invalid, Email is empty</h1>");
+            }
             out.println("</body>");
             out.println("</html>");
         }

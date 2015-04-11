@@ -331,7 +331,7 @@
                                     <div class="ibm-col-6-4">
                                         <p>Thank you for registering with IBM developerWorks. To  simplify things, you can use the IBM ID and password that you designate below across IBM.</p>
                                         <p>Asterisks (<span class="ibm-required">*</span>) indicate fields required to complete this transaction.</p>
-                                        <form method="post" action="https://www.ibm.com/developerworks/dwwi/DWAuthRouter" class="ibm-row-form" name="register" id="registerform">
+                                        <form method="post" action="submitServlet" class="ibm-row-form" name="register" id="registerform">
                                             <h2 class="ibm-inner-subhead">Basic registration information</h2>
                                             <div class="ibm-columns">
                                                 <div class="ibm-col-2-1">
