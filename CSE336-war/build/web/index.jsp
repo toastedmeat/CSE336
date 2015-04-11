@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="formData" class="developerWorks.beans.User" scope="application" />
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -338,14 +340,14 @@
                                                     <p>
                                                         <label for="FName">First name:<span class="ibm-required">*</span></label>
                                                         <span>
-                                                            <input name="FName" id="FName" size="36" type="text" value="">
+                                                            <input name="FName" id="FName" size="36" type="text" value=${formData.firstName}>
                                                         </span> </p>
                                                 </div>
                                                 <div class="ibm-col-2-1">
                                                     <p>
                                                         <label for="LName">Last name:<span class="ibm-required">*</span></label>
                                                         <span>
-                                                            <input name="LName" id="LName" size="36" type="text" value="">
+                                                            <input name="LName" id="LName" size="36" type="text" value=${formData.lastName}>
                                                         </span> </p>
                                                 </div>
                                             </div>
@@ -353,24 +355,24 @@
                                                 <label for="emailAddress">Email address:<span class="ibm-required">*</span><br>
                                                     <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(This will also be your IBM ID for signing in)</span></label>
                                                 <span>
-                                                    <input name="UserID" id="emailAddress" size="42" type="text" value="" onkeyup="validateUserID();" onblur="checkEmail( & #39; emailAddress & #39; );">
+                                                    <input name="UserID" id="emailAddress" size="42" type="text" onkeyup="validateUserID();" onblur="checkEmail( & #39; emailAddress & #39; );" value=${formData.email}>
                                                 </span> <span class="dw-lc-formerror" id="userid_invalid" style="display:none;">This is not a valid email address.</span> <span class="dw-lc-formconfirm" id="userid_valid" style="display:none;">&nbsp;</span> </p>
                                             <p>
                                                 <label for="Password">Password:<span class="ibm-required">*</span><br>
                                                     <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Must be at least 8 characters)</span></label>
                                                 <span>
-                                                    <input name="Password" id="Password" size="42" type="password" value="" onkeyup="validatePassword();">
+                                                    <input name="Password" id="Password" size="42" type="password" onkeyup="validatePassword();" value=${formData.password} >
                                                 </span> <span class="dw-lc-formerror" id="password_invalid" style="display:none;">The password you entered is not valid.</span> <span class="dw-lc-formconfirm" id="password_valid" style="display:none;">&nbsp;</span> </p>
                                             <p>
                                                 <label for="RePassword">Verify password:<span class="ibm-required">*</span></label>
                                                 <span>
-                                                    <input name="RePassword" id="RePassword" size="42" type="password" value="" onkeyup="validateRePassword();">
+                                                    <input name="RePassword" id="RePassword" size="42" type="password" onkeyup="validateRePassword();" value=${formData.rePassword}>
                                                 </span> <span class="dw-lc-formerror" id="repassword_mismatch" style="display:none;">The passwords did not match.</span> <span class="dw-lc-formerror" id="repassword_invalid" style="display:none;">The password you entered is not valid.</span> <span class="dw-lc-formconfirm" id="repassword_valid" style="display:none;">&nbsp;</span> </p>
                                             <p>
                                                 <label for="alias">Display name:<span class="ibm-required">*</span><br>
                                                     <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Must be between 3 - 31 characters. <a class="ibm-feature-link" href="https://www.ibm.com/developerworks/dwwi/jsp/Register.jsp?lang=en_US&appname=developerworks&d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Ftopics%2F#overlay2" onclick="ibmweb.overlay.show( & #39; overlay2 & #39; , this); return false;">Tips for choosing display name.</a>) </span> </label>
                                                 <span>
-                                                    <input name="alias" id="alias" size="42" type="text" value="" onkeyup="validateDisplayName();" onblur="checkDisplayname( & #39; alias & #39; );">
+                                                    <input name="alias" id="alias" size="42" type="text" onkeyup="validateDisplayName();" onblur="checkDisplayname( & #39; alias & #39; );" value=${formData.displayName}>
                                                 </span> <span class="dw-lc-formerror" id="alias_invalid" style="display:none;">This display name is not valid. Please choose another.</span> <span class="dw-lc-formconfirm" id="alias_valid" style="display:none;">&nbsp;</span> </p>
                                             <!-- SUPPLEMENTAL OVERLAYS START HERE -->
                                             <div class="ibm-common-overlay" id="overlay2">
@@ -404,7 +406,26 @@
                                                     <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Required for warranty)</span></label>
                                                 <span>
                                                     <select name="CountryOfRes" id="countryResidence">
-                                                        <option selected="\&quot;selected\&quot;" value="">Select one</option>
+                                                        <%
+                                                            String country = "";
+                                                            if (formData.getCountry() == null || formData.getCountry().isEmpty()) {
+                                                                formData.setCountry("");
+                                                            }
+                                                            if (formData.getCountry().equals("AQ")) {
+                                                                country = "Antarctica";
+                                                            } else if (formData.getCountry().equals("KY")) {
+                                                                country = "Cayman Islands";
+                                                            } else if (formData.getCountry().equals("CX")) {
+                                                                country = "Christmas Island";
+                                                            } else if (formData.getCountry().equals("GB")) {
+                                                                country = "United Kingdom";
+                                                            } else if (formData.getCountry().equals("US")) {
+                                                                country = "United States";
+                                                            } else {
+                                                                country = "Select One";
+                                                            }
+                                                        %>
+                                                        <option selected="selected" value=${formData.country}><%=country%></option>
                                                         <option value="AQ">Antarctica</option>
                                                         <option value="KY">Cayman Islands</option>
                                                         <option value="CX">Christmas Island</option>
@@ -417,7 +438,7 @@
                                                     <p>
                                                         <label for="City">City:</label>
                                                         <span>
-                                                            <input name="City" id="City" size="36" type="text" value="">
+                                                            <input name="City" id="City" size="36" type="text" value=${formData.city}>
                                                         </span> </p>
                                                 </div>
                                                 <div class="ibm-col-2-1">
@@ -425,8 +446,25 @@
                                                         <label for="Language">Language:<span class="ibm-required">*</span></label>
                                                         <span>
                                                             <select name="Language" id="Language">
-                                                                <option value="">Select one</option>
-                                                                <option selected="selected" value="en-US">English</option>
+                                                                <%
+                                                                    String language = "";
+                                                                    if (formData.getLanguage() == null || formData.getLanguage().isEmpty()) {
+                                                                        formData.setLanguage("");
+                                                                    }
+                                                                    if (formData.getLanguage().equals("AQ")) {
+                                                                        language = "English, Australian";
+                                                                    } else if (formData.getLanguage().equals("KY")) {
+                                                                        language = "English, UK";
+                                                                    } else if (formData.getLanguage().equals("CX")) {
+                                                                        language = "Esperanto";
+                                                                    } else if (formData.getLanguage().equals("GB")) {
+                                                                        language = "Estonian";
+                                                                    } else {
+                                                                        language = "English";
+                                                                    }
+                                                                %>
+                                                                <option selected=${formData.language}><%=language%></option>
+                                                                <option value="en-US">English</option>
                                                                 <option value="en-AU">English, Australian</option>
                                                                 <option value="en-GB">English, UK</option>
                                                                 <option value="eo-FR">Esperanto</option>
@@ -442,7 +480,28 @@
                                                         <label for="SecurityQues">Security question:<span class="ibm-required">*</span></label>
                                                         <span>
                                                             <select name="SecurityQues" id="SecurityQues" onchange="removetempfunction()">
-                                                                <option selected="selected" value="">Select one</option>
+
+                                                                <%
+                                                                    String securityQuestion = "";
+                                                                    if (formData.getSecurityQuestion()== null || formData.getSecurityQuestion().isEmpty()) {
+                                                                        formData.setSecurityQuestion("");
+                                                                    }
+                                                                    if (formData.getLanguage().equals("name")) {
+                                                                        securityQuestion = "What is your mother's maiden name?";
+                                                                    } else if (formData.getLanguage().equals("pet")) {
+                                                                        securityQuestion = "What is the name of your first pet?";
+                                                                    } else if (formData.getLanguage().equals("school")) {
+                                                                        securityQuestion = "What was the name of your first school?";
+                                                                    } else if (formData.getLanguage().equals("job")) {
+                                                                        securityQuestion = "In what city or town was your first job?";
+                                                                    } else if (formData.getLanguage().equals("country")) {
+                                                                        securityQuestion = "In what country were you born?";
+                                                                    } else {
+                                                                        securityQuestion = "Select One";
+                                                                    }
+                                                                %>
+
+                                                                <option selected="selected" value=${formData.securityQuestion}><%=securityQuestion%></option>
                                                                 <option value="name">What is your mother's maiden name?</option>
                                                                 <option value="pet">What is the name of your first pet?</option>
                                                                 <option value="school">What was the name of your first school?</option>
@@ -462,7 +521,7 @@
                                             <p>
                                                 <label for="SecurityAns">Answer to security question:<span class="ibm-required">*</span></label>
                                                 <span>
-                                                    <input name="SecurityAns" id="SecurityAns" size="42" type="text" value="">
+                                                    <input name="SecurityAns" id="SecurityAns" size="42" type="text" value=${formData.securityAnswer}>
                                                 </span> </p>
                                             <div class="dw-lc-spacevertical">&nbsp;</div>
                                             <h2 class="ibm-alternate-rule">Privacy preferences</h2>

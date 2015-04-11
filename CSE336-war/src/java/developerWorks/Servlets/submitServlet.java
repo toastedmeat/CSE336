@@ -8,6 +8,7 @@ package developerWorks.Servlets;
 import developerWorks.beans.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,16 +34,22 @@ public class submitServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            User formUser = new User();
-            formUser.setFirstName(request.getParameter("FName"));
-            formUser.setLastName(request.getParameter("LName"));
-            formUser.setEmail(request.getParameter("UserID"));
-            formUser.setPassword(request.getParameter("Password"));
-            formUser.setDisplayName(request.getParameter("alias"));
-            formUser.setCountry(request.getParameter("CountryOfRes"));
-            formUser.setLanguage(request.getParameter("Language"));
-            formUser.setSecurityQuestion(request.getParameter("SecurityQues"));
-            formUser.setSecurityAnswer(request.getParameter("SecurityAns"));
+            User formData = new User();
+            formData.setFirstName(request.getParameter("FName"));
+            formData.setLastName(request.getParameter("LName"));
+            formData.setEmail(request.getParameter("UserID"));
+            formData.setPassword(request.getParameter("Password"));
+            formData.setRePassword(request.getParameter("RePassword"));
+            formData.setDisplayName(request.getParameter("alias"));
+            formData.setCountry(request.getParameter("CountryOfRes"));
+            formData.setCity(request.getParameter("City"));
+            formData.setLanguage(request.getParameter("Language"));
+            formData.setSecurityQuestion(request.getParameter("SecurityQues"));
+            formData.setSecurityAnswer(request.getParameter("SecurityAns"));
+            
+            String urlSuccess = "submitPage.jsp";
+            String urlFail = "/index.jsp";
+            RequestDispatcher rd = getServletContext().getRequestDispatcher(urlFail);
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -50,10 +57,12 @@ public class submitServlet extends HttpServlet {
             out.println("<title>Servlet submitServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            if(formUser.isValid()){
-                response.sendRedirect("submitPage.jsp");
+            if(formData.isValid()){
+                response.sendRedirect(urlSuccess);
             } else {
-                out.println("<h1>Email is: Invalid, Email is empty</h1>");
+                out.print("Invalid Email");
+                request.setAttribute("formData", formData);
+                rd.include(request, response);
             }
             out.println("</body>");
             out.println("</html>");

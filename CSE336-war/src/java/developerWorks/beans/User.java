@@ -16,8 +16,10 @@ public class User implements Serializable{
     private String lastName;
     private String email;
     private String password;
+    private String rePassword;
     private String displayName;
     private String country;
+    private String city;
     private String language = "English";
     private String securityQuestion;
     private String securityAnswer;
@@ -29,8 +31,10 @@ public class User implements Serializable{
         this.lastName = null;
         this.email = null;
         this.password = null;
+        this.rePassword = null;
         this.displayName = null;
         this.country = null;
+        this.city = null;
         this.securityQuestion = null;
         this.securityAnswer = null;
         this.byEmail = false;
@@ -39,20 +43,36 @@ public class User implements Serializable{
     
     
 
-    public User(String firstName, String lastName, String email, String password, String displayName, String country, String securityQuestion, String securityAnswer, boolean byEmail, boolean byTelephoneOrPostalMail) {
+    public User(String firstName, String lastName, String email, String password,String rePassword, String displayName, String country, String city, String securityQuestion, String securityAnswer, boolean byEmail, boolean byTelephoneOrPostalMail) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.rePassword = rePassword;
         this.displayName = displayName;
         this.country = country;
+        this.city = city;
         this.securityQuestion = securityQuestion;
         this.securityAnswer = securityAnswer;
         this.byEmail = byEmail;
         this.byTelephoneOrPostalMail = byTelephoneOrPostalMail;
     }
-    
-    
+
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public String getFirstName() {
         return firstName;
