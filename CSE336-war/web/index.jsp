@@ -33,20 +33,20 @@
         <meta name="DC.Publisher" content="IBM Corporation">
         <meta name="Last update" content="14032014spf">
         <!-- HEADER_SCRIPTS_AND_CSS_INCLUDE -->
-        <link href="./developerWorks registration_files/www.css" rel="stylesheet" title="www" type="text/css">
+        <link href="./css/www.css" rel="stylesheet" title="www" type="text/css">
         <!-- Masthead/footer -->
-        <link href="./developerWorks registration_files/dw-mf.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
-        <link href="./developerWorks registration_files/dw-mf-minimal-N.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
+        <link href="./css/dw-mf.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
+        <link href="./css/dw-mf-minimal-N.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
         <!-- Home CSS -->
-        <link href="./developerWorks registration_files/dwwi-v17.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
-        <script src="./developerWorks registration_files/www.js"></script>
+        <link href="./css/dwwi-v17.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
+        <script src="./js/www.js"></script>
         <style type="text/css"></style>
-        <script src="./developerWorks registration_files/eluminate.js"></script>
-        <script src="./developerWorks registration_files/head.js"></script>
-        <script src="./developerWorks registration_files/50200000.js"></script>
-        <script src="./developerWorks registration_files/dw-www.js"></script>
-        <script src="./developerWorks registration_files/Dialog.xd.js"></script>
-        <script src="./developerWorks registration_files/prototype.js"></script>
+        <script src="./js/eluminate.js"></script>
+        <script src="./js/head.js"></script>
+        <script src="./js/50200000.js"></script>
+        <script src="./js/dw-www.js"></script>
+        <script src="./js/Dialog.xd.js"></script>
+        <script src="./js/prototype.js"></script>
         <script> ibmweb.config.sbs = false;</script>
         <script>
                     function removetempfunction() {
@@ -267,49 +267,49 @@
             }
             }
         </script>
-        <script src="./developerWorks registration_files/usen-utf8.js" id="dojoIoScript2"></script>
+        <script src="./js/usen-utf8.js" id="dojoIoScript2"></script>
         <script src="./developerWorks registration_files/saved_resource" id="dojoIoScript3"></script>
-        <script src="./developerWorks registration_files/profiling.js" id="dojoIoScript4"></script>
-        <script src="./developerWorks registration_files/mmcore.js"></script>
-        <script src="./developerWorks registration_files/move.xd.js"></script>
-        <script src="./developerWorks registration_files/TimedMoveable.xd.js"></script>
-        <script src="./developerWorks registration_files/_CssStateMixin.xd.js"></script>
-        <script src="./developerWorks registration_files/_FormMixin.xd.js"></script>
-        <script src="./developerWorks registration_files/_DialogMixin.xd.js"></script>
-        <script src="./developerWorks registration_files/DialogUnderlay.xd.js"></script>
-        <script src="./developerWorks registration_files/ContentPane.xd.js"></script>
-        <script src="./developerWorks registration_files/common.xd.js"></script>
-        <script src="./developerWorks registration_files/TooltipDialog.xd.js"></script>
-        <script src="./developerWorks registration_files/cookie-id.js"></script>
-        <script src="./developerWorks registration_files/rules_50200000.js"></script>
-        <script src="./developerWorks registration_files/dispatcher-v3.js"></script>
-        <script src="./developerWorks registration_files/blackwhite_lists.json" id="dojoIoScript5"></script>
+        <script src="./js/profiling.js" id="dojoIoScript4"></script>
+        <script src="./js/mmcore.js"></script>
+        <script src="./js/move.xd.js"></script>
+        <script src="./js/TimedMoveable.xd.js"></script>
+        <script src="./js/_CssStateMixin.xd.js"></script>
+        <script src="./js/_FormMixin.xd.js"></script>
+        <script src="./js/_DialogMixin.xd.js"></script>
+        <script src="./js/DialogUnderlay.xd.js"></script>
+        <script src="./js/ContentPane.xd.js"></script>
+        <script src="./js/common.xd.js"></script>
+        <script src="./js/TooltipDialog.xd.js"></script>
+        <script src="./js/cookie-id.js"></script>
+        <script src="./js/rules_50200000.js"></script>
+        <script src="./js/dispatcher-v3.js"></script>
+        <script src="./json/blackwhite_lists.json" id="dojoIoScript5"></script>
         <script src="./developerWorks registration_files/saved_resource(1)" id="mmcore.1" ></script>
-        <script src="./developerWorks registration_files/Mover.xd.js"></script>
-        <script src="./developerWorks registration_files/Moveable.xd.js"></script>
-        <script src="./developerWorks registration_files/_ContentPaneResizeMixin.xd.js"></script>
-        <script src="./developerWorks registration_files/html.xd.js"></script>
-        <script src="./developerWorks registration_files/loading.xd.js"></script>
-        <script src="./developerWorks registration_files/yahoo-min.js"></script>
-        <script src="./developerWorks registration_files/cp-v3.js"></script>
-        <script src="./developerWorks registration_files/common.xd(1).js"></script>
-        <script src="./developerWorks registration_files/autoscroll.xd.js"></script>
-        <script src="./developerWorks registration_files/_LayoutWidget.xd.js"></script>
-        <script src="./developerWorks registration_files/json-min.js"></script>
+        <script src="./js/Mover.xd.js"></script>
+        <script src="./js/Moveable.xd.js"></script>
+        <script src="./js/_ContentPaneResizeMixin.xd.js"></script>
+        <script src="./js/html.xd.js"></script>
+        <script src="./js/loading.xd.js"></script>
+        <script src="./js/yahoo-min.js"></script>
+        <script src="./js/cp-v3.js"></script>
+        <script src="./js/common.xd(1).js"></script>
+        <script src="./js/autoscroll.xd.js"></script>
+        <script src="./js/_LayoutWidget.xd.js"></script>
+        <script src="./js/json-min.js"></script>
     </head>
     <body id="ibm-com" class="v17" aria-busy="false">
-        <div id="ibm-top" class="ibm-landing-page ibm-no-scroll"><img src="./developerWorks registration_files/ibm_logo_print.png" width="43" height="15" id="ibm-print-masthead" alt="IBM Print"> 
+        <div id="ibm-top" class="ibm-landing-page ibm-no-scroll"><img src="./img/ibm_logo_print.png" width="43" height="15" id="ibm-print-masthead" alt="IBM Print"> 
             <!-- MASTHEAD_BEGIN -->
             <div id="ibm-masthead" role="banner">
                 <div id="dw-masthead-top-row">
                     <ul id="ibm-mast-options-dw" role="toolbar">
-                        <li role="presentation" id="dw-mast-top-4"> <a href="http://www.ibm.com/developerworks/"><img src="./developerWorks registration_files/dwn-dw-badge.png" width="43" height="22" alt="dW" aria-label="dW"></a> </li>
+                        <li role="presentation" id="dw-mast-top-4"> <a href="http://www.ibm.com/developerworks/"><img src="./img/dwn-dw-badge.png" width="43" height="22" alt="dW" aria-label="dW"></a> </li>
                         <li role="presentation" id="dw-mast-top-3"> <a href="http://www.ibm.com/">IBM</a> </li>
                     </ul>
                 </div>
                 <div id="ibm-universal-nav-dw" aria-label="Site map">
                     <ul id="ibm-unav-links-dw">
-                        <li id="ibm-unav-home-dwlogo"> <a href="http://www.ibm.com/developerworks/"><img src="./developerWorks registration_files/dwn-dw-wordmark.png" width="225" height="28" alt="developerWorks®"></a> </li>
+                        <li id="ibm-unav-home-dwlogo"> <a href="http://www.ibm.com/developerworks/"><img src="./img/dwn-dw-wordmark.png" width="225" height="28" alt="developerWorks®"></a> </li>
                     </ul>
                 </div>
             </div>
@@ -510,7 +510,7 @@
                             </div>
                             <div class="ibm-container">
                                 <h2>Why register?</h2>
-                                <div class="ibm-container-body"> <img src="./developerWorks registration_files/hiviz-mydw-new.jpg" width="168" height="64" alt="Register for mydeveloperWorks">
+                                <div class="ibm-container-body"> <img src="./img/hiviz-mydw-new.jpg" width="168" height="64" alt="Register for mydeveloperWorks">
                                     <p>developerWorks is a worldwide community of software developers and IT professionals, from students to seasoned veterans.</p>
                                     <ul class="ibm-bullet-list ibm-no-links">
                                         <li>Find expert answers in forums</li>
@@ -534,7 +534,7 @@
             </div>
         </div>
         <div id="ibm-metrics"> 
-            <script src="./developerWorks registration_files/stats.js"></script> 
+            <script src="./js/stats.js"></script> 
             <a id="icon-id014037539530545473"><img style="border: none; cursor:pointer;" onerror="truste.eu.showSeal()" alt="TRUSTe Icon" src="./developerWorks registration_files/get"></a></div>
         <script src="./developerWorks registration_files/notice"></script><script defer="defer" async="async" src="./developerWorks registration_files/notice(1)"></script>
     </body>
