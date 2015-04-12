@@ -406,31 +406,12 @@
                                                     <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Required for warranty)</span></label>
                                                 <span>
                                                     <select name="CountryOfRes" id="countryResidence">
-                                                        <%
-                                                            String country = "";
-                                                            if (formData.getCountry() == null || formData.getCountry().isEmpty()) {
-                                                                formData.setCountry("");
-                                                            }
-                                                            if (formData.getCountry().equals("AQ")) {
-                                                                country = "Antarctica";
-                                                            } else if (formData.getCountry().equals("KY")) {
-                                                                country = "Cayman Islands";
-                                                            } else if (formData.getCountry().equals("CX")) {
-                                                                country = "Christmas Island";
-                                                            } else if (formData.getCountry().equals("GB")) {
-                                                                country = "United Kingdom";
-                                                            } else if (formData.getCountry().equals("US")) {
-                                                                country = "United States";
-                                                            } else {
-                                                                country = "Select One";
-                                                            }
-                                                        %>
-                                                        <option selected="selected" value=${formData.country}><%=country%></option>
-                                                        <option value="AQ">Antarctica</option>
-                                                        <option value="KY">Cayman Islands</option>
-                                                        <option value="CX">Christmas Island</option>
-                                                        <option value="GB">United Kingdom</option>
-                                                        <option value="US">United States</option>
+                                                        <option value="Select One" ${formData.country == 'Select One' ? 'selected="selected"' : ''}>Select One</option>
+                                                        <option value="AQ" ${formData.country == 'AQ' ? 'selected="selected"' : ''}>Antarctica</option>
+                                                        <option value="KY" ${formData.country == 'KY' ? 'selected="selected"' : ''}>Cayman Islands</option>
+                                                        <option value="CX" ${formData.country == 'CX' ? 'selected="selected"' : ''}>Christmas Island</option>
+                                                        <option value="GB" ${formData.country == 'GB' ? 'selected="selected"' : ''}>United Kingdom</option>
+                                                        <option value="US" ${formData.country == 'US' ? 'selected="selected"' : ''}>United States</option>
                                                     </select>
                                                 </span> </p>
                                             <div class="ibm-columns">
@@ -446,29 +427,11 @@
                                                         <label for="Language">Language:<span class="ibm-required">*</span></label>
                                                         <span>
                                                             <select name="Language" id="Language">
-                                                                <%
-                                                                    String language = "";
-                                                                    if (formData.getLanguage() == null || formData.getLanguage().isEmpty()) {
-                                                                        formData.setLanguage("");
-                                                                    }
-                                                                    if (formData.getLanguage().equals("AQ")) {
-                                                                        language = "English, Australian";
-                                                                    } else if (formData.getLanguage().equals("KY")) {
-                                                                        language = "English, UK";
-                                                                    } else if (formData.getLanguage().equals("CX")) {
-                                                                        language = "Esperanto";
-                                                                    } else if (formData.getLanguage().equals("GB")) {
-                                                                        language = "Estonian";
-                                                                    } else {
-                                                                        language = "English";
-                                                                    }
-                                                                %>
-                                                                <option selected=${formData.language}><%=language%></option>
-                                                                <option value="en-US">English</option>
-                                                                <option value="en-AU">English, Australian</option>
-                                                                <option value="en-GB">English, UK</option>
-                                                                <option value="eo-FR">Esperanto</option>
-                                                                <option value="et-EE">Estonian</option>
+                                                                <option value="en-US" ${formData.language == 'en-US' ? 'selected="selected"' : ''}>English</option>
+                                                                <option value="en-AU" ${formData.language == 'en-AU' ? 'selected="selected"' : ''}>English, Australian</option>
+                                                                <option value="en-GB" ${formData.language == 'en-GB' ? 'selected="selected"' : ''}>English, UK</option>
+                                                                <option value="eo-FR" ${formData.language == 'eo-FR' ? 'selected="selected"' : ''}>Esperanto</option>
+                                                                <option value="et-EE" ${formData.language == 'et-EE' ? 'selected="selected"' : ''}>Estonian</option>
                                                             </select>
                                                         </span> </p>
                                                 </div>
@@ -480,33 +443,11 @@
                                                         <label for="SecurityQues">Security question:<span class="ibm-required">*</span></label>
                                                         <span>
                                                             <select name="SecurityQues" id="SecurityQues" onchange="removetempfunction()">
-
-                                                                <%
-                                                                    String securityQuestion = "";
-                                                                    if (formData.getSecurityQuestion()== null || formData.getSecurityQuestion().isEmpty()) {
-                                                                        formData.setSecurityQuestion("");
-                                                                    }
-                                                                    if (formData.getLanguage().equals("name")) {
-                                                                        securityQuestion = "What is your mother's maiden name?";
-                                                                    } else if (formData.getLanguage().equals("pet")) {
-                                                                        securityQuestion = "What is the name of your first pet?";
-                                                                    } else if (formData.getLanguage().equals("school")) {
-                                                                        securityQuestion = "What was the name of your first school?";
-                                                                    } else if (formData.getLanguage().equals("job")) {
-                                                                        securityQuestion = "In what city or town was your first job?";
-                                                                    } else if (formData.getLanguage().equals("country")) {
-                                                                        securityQuestion = "In what country were you born?";
-                                                                    } else {
-                                                                        securityQuestion = "Select One";
-                                                                    }
-                                                                %>
-
-                                                                <option selected="selected" value=${formData.securityQuestion}><%=securityQuestion%></option>
-                                                                <option value="name">What is your mother's maiden name?</option>
-                                                                <option value="pet">What is the name of your first pet?</option>
-                                                                <option value="school">What was the name of your first school?</option>
-                                                                <option value="job">In what city or town was your first job?</option>
-                                                                <option value="country">In what country were you born?</option>
+                                                                <option value="name" ${formData.securityQuestion == 'name' ? 'selected="selected"' : ''}>What is your mother's maiden name?</option>
+                                                                <option value="pet" ${formData.securityQuestion == 'pet' ? 'selected="selected"' : ''}>What is the name of your first pet?</option>
+                                                                <option value="school" ${formData.securityQuestion == 'school' ? 'selected="selected"' : ''}>What was the name of your first school?</option>
+                                                                <option value="job" ${formData.securityQuestion == 'job' ? 'selected="selected"' : ''}>In what city or town was your first job?</option>
+                                                                <option value="country" ${formData.securityQuestion == 'country' ? 'selected="selected"' : ''}>In what country were you born?</option>
                                                             </select>
                                                         </span> </p>
                                                 </div>

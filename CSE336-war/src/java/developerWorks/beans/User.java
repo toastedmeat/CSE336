@@ -163,6 +163,6 @@ public class User implements Serializable{
     }
     
     public boolean isValid(){
-        return !email.isEmpty();
+        return email.isEmpty() ? false : true;
     }
 }
