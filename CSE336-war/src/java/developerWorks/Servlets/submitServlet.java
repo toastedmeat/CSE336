@@ -51,21 +51,12 @@ public class submitServlet extends HttpServlet {
             String urlFail = "/index.jsp";
             RequestDispatcher rd = getServletContext().getRequestDispatcher(urlFail);
             
-            /*out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet submitServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");*/
             if(formData.isValid()){
                 response.sendRedirect(urlSuccess);
             } else {
-                //out.print("Invalid Email");
                 request.setAttribute("formData", formData);
                 rd.include(request, response);
             }
-            /*out.println("</body>");
-            out.println("</html>");*/
         }
     }
 

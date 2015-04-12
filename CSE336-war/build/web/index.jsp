@@ -490,6 +490,8 @@
                                                 <p>
                                                     <input id="ibm-submit" name="ibm-submit" class="ibm-btn-arrow-pri" value="Register" type="submit">
                                                     <span class="ibm-sep"></span>
+                                                    <input type="button" value="Test Page" onclick="parent.location='TestJSP.jsp'">
+                                                    <span class="ibm-sep"></span>
                                                     <input value="Cancel" type="button" name="ibm-cancel" class="ibm-btn-cancel-sec" onclick="window.location(window.location.href = & #39; http://www.ibm.com/developerworks/topics/&#39;)">
                                                 </p>
                                             </div>
