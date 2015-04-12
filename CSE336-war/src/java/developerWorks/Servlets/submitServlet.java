@@ -46,15 +46,22 @@ public class submitServlet extends HttpServlet {
             formData.setLanguage(request.getParameter("Language"));
             formData.setSecurityQuestion(request.getParameter("SecurityQues"));
             formData.setSecurityAnswer(request.getParameter("SecurityAns"));
+            if(request.getParameter("NC_CHECK_EMAIL") != null)
+                formData.setByEmail(true);
+            if(request.getParameter("NC_CHECK_OTHER") != null)
+                formData.setByTelephoneOrPostalMail(true);
             
             String urlSuccess = "submitPage.jsp";
             String urlFail = "/index.jsp";
             RequestDispatcher rd = getServletContext().getRequestDispatcher(urlFail);
+            request.setAttribute("formData", formData);
             
             if(formData.isValid()){
-                response.sendRedirect(urlSuccess);
+                RequestDispatcher r = request.getRequestDispatcher("TestJSP.jsp");
+                r.forward(request, response);
+                //response.sendRedirect(urlSuccess);
             } else {
-                request.setAttribute("formData", formData);
+                request.setAttribute("errorMessage", "Invalid Email Address");
                 rd.include(request, response);
             }
         }

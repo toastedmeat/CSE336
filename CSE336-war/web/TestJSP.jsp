@@ -90,7 +90,7 @@
         
         <h3>Bean Viewer</h3>
         <%@ page import="java.lang.reflect.*" %>
-        <jsp:useBean id="formData" class="developerWorks.beans.User" />
+        <jsp:useBean scope="request" id="formData" class="developerWorks.beans.User" />
         <table>
             <tr>
                 <th>Bean Name</th>
