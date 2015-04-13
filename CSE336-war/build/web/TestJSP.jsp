@@ -66,7 +66,7 @@
                 <th>Parameter Name</th>
                 <th>Parameter Value</th>
             </tr>
-            <c:forEach var="p" items="${paramValues}">
+            <c:forEach var="p" items="${param}">
                 <tr>
                 <td> <c:out value="${p.key}"/> </td>
                 <td> <c:out value="${p.value}"/> </td>

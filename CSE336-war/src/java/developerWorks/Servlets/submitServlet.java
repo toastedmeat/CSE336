@@ -52,8 +52,8 @@ public class submitServlet extends HttpServlet {
                 formData.setByTelephoneOrPostalMail(true);
             
             String urlSuccess = "submitPage.jsp";
-            String urlFail = "/index.jsp";
-            RequestDispatcher rd = getServletContext().getRequestDispatcher(urlFail);
+            String urlFail = "index.jsp";
+            RequestDispatcher rd = request.getRequestDispatcher(urlFail);
             request.setAttribute("formData", formData);
             
             if(formData.isValid()){
