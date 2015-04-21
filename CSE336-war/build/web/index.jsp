@@ -6,8 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="formData" class="developerWorks.beans.User" scope="session" />
-
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta charset="utf-8">

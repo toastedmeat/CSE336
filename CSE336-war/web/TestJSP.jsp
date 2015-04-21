@@ -7,10 +7,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
+<%@taglib prefix="t" uri = "/WEB-INF/tlds/myTLD" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Test Page</title>
+        <title>Submit Page</title>
+        <!-- <t:NewTagHandler /> -->
     </head>
     <body>
         <style>
