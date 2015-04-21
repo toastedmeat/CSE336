@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="formData" class="developerWorks.beans.User" scope="application" />
+<jsp:useBean id="formData" class="developerWorks.beans.User" scope="request" />
 
 <!DOCTYPE html>
 <html>
