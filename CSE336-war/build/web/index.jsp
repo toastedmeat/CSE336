@@ -5,9 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="formData" class="developerWorks.beans.User" scope="request" />
+<jsp:useBean id="formData" class="developerWorks.beans.User" scope="session" />
 
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -367,7 +368,7 @@
                                             <p>
                                                 <label for="RePassword">Verify password:<span class="ibm-required">*</span></label>
                                                 <span>
-                                                    <input name="RePassword" id="RePassword" size="42" type="password" onkeyup="validateRePassword();" value=${formData.rePassword}>
+                                                    <input name="RePassword" id="RePassword" size="42" type="password" onkeyup="validateRePassword();" value="${formData.rePassword}">
                                                 </span> <span class="dw-lc-formerror" id="repassword_mismatch" style="display:none;">The passwords did not match.</span> <span class="dw-lc-formerror" id="repassword_invalid" style="display:none;">The password you entered is not valid.</span> <span class="dw-lc-formconfirm" id="repassword_valid" style="display:none;">&nbsp;</span> </p>
                                             <p>
                                                 <label for="alias">Display name:<span class="ibm-required">*</span><br>
@@ -452,13 +453,6 @@
                                                             </select>
                                                         </span> </p>
                                                 </div>
-                                                <div class="ibm-col-2-1">
-                                                    <p id="customquestioncontainer" style="display:none;">
-                                                        <label for="custom_question">Place a question in this text field.</label>
-                                                        <span>
-                                                            <input name="custom_question" id="custom_question" size="42" type="text" value="">
-                                                        </span> </p>
-                                                </div>
                                             </div>
                                             <p>
                                                 <label for="SecurityAns">Answer to security question:<span class="ibm-required">*</span></label>
@@ -470,12 +464,12 @@
                                             <div id="privacyid">
                                                 <p>Please keep me informed of products, services and offerings from IBM companies worldwide.</p>
                                                 <p> <span class="ibm-input-group">
-                                                        <input id="NC_CHECK_EMAIL" value="0" name="NC_CHECK_EMAIL" type="checkbox">
+                                                        <input id="NC_CHECK_EMAIL" value="0" name="NC_CHECK_EMAIL" type="checkbox" ${formData.byEmail == true ? 'checked' : ''}>
                                                         <label for="NC_CHECK_EMAIL">by email.</label>
                                                     </span><br>
                                                     <input id="NC_HIDDEN_EMAIL" value="OPT_IN" name="NC_HIDDEN_EMAIL" type="hidden">
                                                     <span class="ibm-input-group">
-                                                        <input id="NC_CHECK_OTHER" value="4" name="NC_CHECK_OTHER" type="checkbox">
+                                                        <input id="NC_CHECK_OTHER" value="4" name="NC_CHECK_OTHER" type="checkbox" ${formData.byTelephoneOrPostalMail == true ? 'checked' : ''}>
                                                         <label for="NC_CHECK_OTHER">by telephone or postal mail.</label>
                                                     </span><br>
                                                     <input id="NC_HIDDEN_OTHER" value="OPT_IN" name="NC_HIDDEN_OTHER" type="hidden">

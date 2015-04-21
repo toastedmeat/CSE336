@@ -52,12 +52,12 @@ public class submitServlet extends HttpServlet {
                 formData.setByTelephoneOrPostalMail(true);
             
             String urlSuccess = "submitPage.jsp";
-            String urlFail = "/index.jsp";
-            RequestDispatcher rd = getServletContext().getRequestDispatcher(urlFail);
+            String urlFail = "index.jsp";
+            RequestDispatcher rd = request.getRequestDispatcher(urlFail);
             request.setAttribute("formData", formData);
             
             if(formData.isValid()){
-                RequestDispatcher r = request.getRequestDispatcher("TestJSP.jsp");
+                RequestDispatcher r = request.getRequestDispatcher(urlSuccess);
                 r.forward(request, response);
                 //response.sendRedirect(urlSuccess);
             } else {
