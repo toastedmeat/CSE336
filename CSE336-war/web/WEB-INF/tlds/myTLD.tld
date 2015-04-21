@@ -21,8 +21,13 @@
       </listener>
     -->
   <tag>
-    <name>NewTagHandler</name>
-    <tag-class>developerWorks.tldHandlers.NewTagHandler</tag-class>
-    <body-content>empty</body-content>
+    <name>UserBeaner</name>
+    <tag-class>developerWorks.tldHandlers.UserHandler</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+        <name>userbean</name>
+        <rtexprvalue>true</rtexprvalue>
+        <required>true</required>
+    </attribute>
   </tag>
 </taglib>

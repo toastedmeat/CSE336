@@ -6,13 +6,15 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.lang.reflect.*" %>
+<jsp:useBean scope="session" id="formData" class="developerWorks.beans.User" />
 <!DOCTYPE html>
 <%@taglib prefix="t" uri = "/WEB-INF/tlds/myTLD" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Submit Page</title>
-        <!-- <t:NewTagHandler /> -->
+        <!--  -->
     </head>
     <body>
         <style>
@@ -91,31 +93,18 @@
         </table>
         
         <h3>Bean Viewer</h3>
-        <%@ page import="java.lang.reflect.*" %>
-        <jsp:useBean scope="request" id="formData" class="developerWorks.beans.User" />
+        
         <table>
             <tr>
-                <th>Bean Name</th>
-                <th>Bean Value</th>
+                <th>Header Name</th>
+                <th>Header Value</th>
             </tr>
-            <%
-                Class b = Class.forName("developerWorks.beans.User");
-                Field[] fields = b.getDeclaredFields();
-                for (Field f : fields) {
-            %>
-            <tr>
-            <%
-                    String name = f.getName();
-                    String camelName = "get" +
-                    (name.substring(0,1).toUpperCase() + name.substring(1));
-                    if(name == "byEmail" || name == "byTelephoneOrPostalMail")
-                        camelName = "is" + (name.substring(0,1).toUpperCase() + name.substring(1));
-                    Method m = b.getMethod(camelName);
-                    out.println("<td>" + name + "</td>");
-                    out.println("<td>" + m.invoke(formData) + "</td>");
-                }
-            %>
-            </tr>
+            <t:UserBeaner userbean="${requestScope['formData']}">
+                <tr>
+                    <td>${name}</td>
+                    <td>${value}</td>
+                </tr>
+            </t:UserBeaner>
         </table>
     </body>
 </html>

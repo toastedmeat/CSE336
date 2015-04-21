@@ -6,6 +6,8 @@
 package developerWorks.beans;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -25,6 +27,7 @@ public class User implements Serializable{
     private String securityAnswer;
     private boolean byEmail;
     private boolean byTelephoneOrPostalMail;
+    private Map m = new HashMap();
 
     public User() {
         this.firstName = null;
@@ -39,10 +42,21 @@ public class User implements Serializable{
         this.securityAnswer = null;
         this.byEmail = false;
         this.byTelephoneOrPostalMail = false;
+        
+        m.put("firstName", null);
+        m.put("lastName", null);
+        m.put("email", null);
+        m.put("password", null);
+        m.put("rePassword", null);
+        m.put("displayName", null);
+        m.put("country", null);
+        m.put("city", null);
+        m.put("securityQuestion", null);
+        m.put("securityAnswer", null);
+        m.put("byEmail", null);
+        m.put("byTelephoneOrPostalMail", null);
     }
     
-    
-
     public User(String firstName, String lastName, String email, String password,String rePassword, String displayName, String country, String city, String securityQuestion, String securityAnswer, boolean byEmail, boolean byTelephoneOrPostalMail) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -64,6 +78,7 @@ public class User implements Serializable{
 
     public void setRePassword(String rePassword) {
         this.rePassword = rePassword;
+        m.put("rePassword", rePassword);
     }
 
     public String getCity() {
@@ -72,6 +87,7 @@ public class User implements Serializable{
 
     public void setCity(String city) {
         this.city = city;
+        m.put("city", city);
     }
 
     public String getFirstName() {
@@ -80,6 +96,7 @@ public class User implements Serializable{
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+        m.put("firstName", firstName);
     }
 
     public String getLastName() {
@@ -88,6 +105,7 @@ public class User implements Serializable{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+        m.put("lastName", lastName);
     }
 
     public String getEmail() {
@@ -96,6 +114,7 @@ public class User implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+        m.put("email", email);
     }
 
     public String getPassword() {
@@ -104,6 +123,7 @@ public class User implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+        m.put("password", password);
     }
 
     public String getDisplayName() {
@@ -112,6 +132,7 @@ public class User implements Serializable{
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+        m.put("displayName", displayName);
     }
 
     public String getCountry() {
@@ -120,6 +141,7 @@ public class User implements Serializable{
 
     public void setCountry(String country) {
         this.country = country;
+        m.put("country", country);
     }
 
     public String getLanguage() {
@@ -128,6 +150,7 @@ public class User implements Serializable{
 
     public void setLanguage(String language) {
         this.language = language;
+        m.put("language", language);
     }
 
     public String getSecurityQuestion() {
@@ -136,6 +159,7 @@ public class User implements Serializable{
 
     public void setSecurityQuestion(String securityQuestion) {
         this.securityQuestion = securityQuestion;
+        m.put("securityQuestion", securityQuestion);
     }
 
     public String getSecurityAnswer() {
@@ -144,6 +168,7 @@ public class User implements Serializable{
 
     public void setSecurityAnswer(String securityAnswer) {
         this.securityAnswer = securityAnswer;
+        m.put("securityAnswer", securityAnswer);
     }
 
     public boolean isByEmail() {
@@ -152,6 +177,7 @@ public class User implements Serializable{
 
     public void setByEmail(boolean byEmail) {
         this.byEmail = byEmail;
+        m.put("byEmail", byEmail);
     }
 
     public boolean isByTelephoneOrPostalMail() {
@@ -160,9 +186,14 @@ public class User implements Serializable{
 
     public void setByTelephoneOrPostalMail(boolean byTelephoneOrPostalMail) {
         this.byTelephoneOrPostalMail = byTelephoneOrPostalMail;
+        m.put("byTelephoneOrPostalMail", byTelephoneOrPostalMail);
     }
     
     public boolean isValid(){
         return email.isEmpty() ? false : true;
+    }
+    
+    public Map getProperties(){
+        return m;
     }
 }

@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Users/Eric/Dropbox/SBUClass/CSE336/CSE336Project/CSE336-war/src/java/developerWorks/Servlets/submitServlet.java</file>
-            <file>file:/F:/Users/Eric/Dropbox/SBUClass/CSE336/CSE336Project/CSE336-war/web/submitPage.jsp</file>
-            <file>file:/F:/Users/Eric/Dropbox/SBUClass/CSE336/CSE336Project/CSE336-war/src/java/developerWorks/beans/User.java</file>
-            <file>file:/F:/Users/Eric/Dropbox/SBUClass/CSE336/CSE336Project/CSE336-war/web/WEB-INF/web.xml</file>
-            <file>file:/F:/Users/Eric/Dropbox/SBUClass/CSE336/CSE336Project/CSE336-war/web/index.jsp</file>
+            <file>file:/C:/Users/Jessica/Desktop/Projects/CSE336/CSE336-war/web/WEB-INF/tlds/myTLD.tld</file>
+            <file>file:/C:/Users/Jessica/Desktop/Projects/CSE336/CSE336-war/web/index.jsp</file>
+            <file>file:/C:/Users/Jessica/Desktop/Projects/CSE336/CSE336-war/src/java/developerWorks/tldHandlers/UserHandler.java</file>
+            <file>file:/C:/Users/Jessica/Desktop/Projects/CSE336/CSE336-war/src/java/developerWorks/Servlets/submitServlet.java</file>
+            <file>file:/C:/Users/Jessica/Desktop/Projects/CSE336/CSE336-war/web/submitPage.jsp</file>
+            <file>file:/C:/Users/Jessica/Desktop/Projects/CSE336/CSE336-war/src/java/developerWorks/beans/User.java</file>
         </group>
     </open-files>
 </project-private>

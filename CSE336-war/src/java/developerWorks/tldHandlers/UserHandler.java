@@ -5,6 +5,10 @@
  */
 package developerWorks.tldHandlers;
 
+import developerWorks.beans.User;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
@@ -15,37 +19,31 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
  *
  * @author Eric
  */
-public class NewTagHandler extends SimpleTagSupport {
+public class UserHandler extends SimpleTagSupport {
+    private User userbean = new User();
 
+    public void setUserbean(User userbean) {
+        this.userbean = userbean;
+    }
+    
     /**
      * Called by the container to invoke this tag. The implementation of this
      * method is provided by the tag library developer, and handles all tag
      * processing, body iteration, etc.
      */
     @Override
-    public void doTag() throws JspException {
+    public void doTag() throws JspException, IOException {
         PageContext pc = (PageContext) getJspContext();
         JspWriter out = pc.getOut();
         
-        try {
-            // TODO: insert code to write html before writing the body content.
-            // e.g.:
-            //
-            // out.println("<strong>" + attribute_1 + "</strong>");
-            // out.println("    <blockquote>");
-
-            JspFragment f = getJspBody();
+        JspFragment f=getJspBody();
+        Set<Map.Entry> s = userbean.getProperties().entrySet();
+        for (Map.Entry me : s) {
+            getJspContext().setAttribute("name", me.getKey());
+            getJspContext().setAttribute("value", me.getValue());
             if (f != null) {
                 f.invoke(out);
             }
-            out.println("POO");
-
-            // TODO: insert code to write html after writing the body content.
-            // e.g.:
-            //
-            // out.println("    </blockquote>");
-        } catch (java.io.IOException ex) {
-            throw new JspException("Error in NewTagHandler tag", ex);
         }
     }
     

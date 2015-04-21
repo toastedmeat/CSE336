@@ -48,8 +48,12 @@ public class submitServlet extends HttpServlet {
             formData.setSecurityAnswer(request.getParameter("SecurityAns"));
             if(request.getParameter("NC_CHECK_EMAIL") != null)
                 formData.setByEmail(true);
+            else
+                formData.setByEmail(false);
             if(request.getParameter("NC_CHECK_OTHER") != null)
                 formData.setByTelephoneOrPostalMail(true);
+            else
+                formData.setByTelephoneOrPostalMail(false);
             
             String urlSuccess = "submitPage.jsp";
             String urlFail = "index.jsp";
