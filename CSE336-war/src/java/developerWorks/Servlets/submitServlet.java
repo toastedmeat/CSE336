@@ -57,7 +57,7 @@ public class submitServlet extends HttpServlet {
             request.setAttribute("formData", formData);
             
             if(formData.isValid()){
-                RequestDispatcher r = request.getRequestDispatcher("TestJSP.jsp");
+                RequestDispatcher r = request.getRequestDispatcher(urlSuccess);
                 r.forward(request, response);
                 //response.sendRedirect(urlSuccess);
             } else {
