@@ -76,9 +76,17 @@ public class User implements Serializable{
         return rePassword;
     }
 
-    public void setRePassword(String rePassword) {
-        this.rePassword = rePassword;
-        m.put("rePassword", rePassword);
+    public String setRePassword(String rePassword) {
+        String s = "";
+        
+        if(rePassword.equals(password)){
+            this.rePassword = rePassword;
+            m.put("rePassword", rePassword);
+        } else{
+            s = "<span style='color:red'>Passwords must match</span>";
+        }
+        
+        return s;
     }
 
     public String getCity() {
@@ -94,45 +102,88 @@ public class User implements Serializable{
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-        m.put("firstName", firstName);
+    public String setFirstName(String firstName) {
+        String s = "";
+        
+        if(firstName.equals("")){
+            s = "<span style='color:red'>First Name field cannot be empty</span>";
+        } else{
+            this.firstName = firstName;
+            m.put("firstName", firstName);
+        }
+        
+        return s;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-        m.put("lastName", lastName);
+    public String setLastName(String lastName) {
+        String s = "";
+        
+        if(lastName.equals("")){
+            s = "<span style='color:red'>Last Name field cannot be empty</span>";
+        } else{
+            this.lastName = lastName;
+            m.put("lastName", lastName);
+        }
+        
+        return s;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-        m.put("email", email);
+    public String setEmail(String email) {
+        String s = "";
+        
+        String emailPattern = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        Boolean b = email.matches(emailPattern);
+        
+        if(b){
+            this.email = email;
+            m.put("email", email);
+        } else{
+            s = "<span style='color:red'>Invalid email address</span>";
+        }
+        
+        return s;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-        m.put("password", password);
+    public String setPassword(String password) {
+        String s = "";
+        
+        if(password.length() < 8){
+            s = "<span style='color:red'>Invalid password. Must be at least 8 characters.</span>";
+        }else{
+            this.password = password;
+            m.put("password", password);
+        }
+        
+        return s;
     }
 
     public String getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-        m.put("displayName", displayName);
+    public String setDisplayName(String displayName) {
+        String s = "";
+        
+        if(displayName.length()<3 || displayName.length()>31){
+            s = "<span style='color:red'>Invalid display name. Must be between 3 - 31 characters.</span>";
+        } else{
+            this.displayName = displayName;
+            m.put("displayName", displayName);
+        }
+        
+        return s;
     }
 
     public String getCountry() {
@@ -152,7 +203,7 @@ public class User implements Serializable{
         this.language = language;
         m.put("language", language);
     }
-
+ 
     public String getSecurityQuestion() {
         return securityQuestion;
     }

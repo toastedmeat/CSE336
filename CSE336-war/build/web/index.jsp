@@ -42,7 +42,8 @@
         <link href="./css/dw-mf-minimal-N.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
         <!-- Home CSS -->
         <link href="./css/dwwi-v17.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
-        <script src="./js/www.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+<!--        <script src="./js/www.js"></script>
         <style type="text/css"></style>
         <script src="./js/eluminate.js"></script>
         <script src="./js/head.js"></script>
@@ -62,9 +63,9 @@
                     document.getElementById('customquestioncontainer').style.display = 'none';
                     }
                     }
-        </script>
+        </script>-->
         <title>developerWorks registration</title>
-        <script>
+<!--        <script>
             function checkEmail(emailAddress) {
             var Teamvalue = document.getElementById(emailAddress).value;
                     var vpreLang = 'en_US';
@@ -298,7 +299,46 @@
         <script src="./js/common.xd(1).js"></script>
         <script src="./js/autoscroll.xd.js"></script>
         <script src="./js/_LayoutWidget.xd.js"></script>
-        <script src="./js/json-min.js"></script>
+        <script src="./js/json-min.js"></script>-->
+        <script>
+            $(document).ready(function(){
+                $("#FName").blur(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?first=" + queryString;
+                    $("#fName_invalid").load(url);
+                });
+                
+                $("#LName").blur(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?last=" + queryString;
+                    $("#lName_invalid").load(url);
+                });
+                
+                $("#emailAddress").blur(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?email=" + queryString;
+                    $("#userid_invalid").load(url);
+                });
+                
+                $("#Password").blur(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?password=" + queryString;
+                    $("#password_invalid").load(url);
+                });
+                
+                $("#RePassword").blur(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?repassword=" + queryString;
+                    $("#repassword_mismatch").load(url);
+                });
+                
+                $("#alias").blur(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?alias=" + queryString;
+                    $("#alias_invalid").load(url);
+                });
+            });
+        </script>
     </head>
     <body id="ibm-com" class="v17" aria-busy="false">
         <div id="ibm-top" class="ibm-landing-page ibm-no-scroll"><img src="./img/ibm_logo_print.png" width="43" height="15" id="ibm-print-masthead" alt="IBM Print"> 
@@ -343,39 +383,46 @@
                                                         <label for="FName">First name:<span class="ibm-required">*</span></label>
                                                         <span>
                                                             <input name="FName" id="FName" size="36" type="text" value=${formData.firstName}>
-                                                        </span> </p>
+                                                        </span> 
+                                                        <span class="dw-lc-formerror" id="fName_invalid"></span>
+                                                    </p>
                                                 </div>
                                                 <div class="ibm-col-2-1">
                                                     <p>
                                                         <label for="LName">Last name:<span class="ibm-required">*</span></label>
                                                         <span>
                                                             <input name="LName" id="LName" size="36" type="text" value=${formData.lastName}>
-                                                        </span> </p>
+                                                        </span> 
+                                                        <span class="dw-lc-formerror" id="lName_invalid"></span>
+                                                    </p>
                                                 </div>
                                             </div>
                                             <p>
                                                 <label for="emailAddress">Email address:<span class="ibm-required">*</span><br>
                                                     <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(This will also be your IBM ID for signing in)</span></label>
                                                 <span>
-                                                    <input name="UserID" id="emailAddress" size="42" type="text" onkeyup="validateUserID();" onblur="checkEmail( & #39; emailAddress & #39; );" value=${formData.email}>
-                                                </span> <span class="dw-lc-formerror" id="userid_invalid" style="display:none;">This is not a valid email address.</span> <span class="dw-lc-formconfirm" id="userid_valid" style="display:none;">&nbsp;</span> </p>
+                                                    <input name="UserID" id="emailAddress" size="42" type="text" value=${formData.email}>
+                                                </span> <span class="dw-lc-formerror" id="userid_invalid"></span> </p>
                                             <p>
                                                 <label for="Password">Password:<span class="ibm-required">*</span><br>
                                                     <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Must be at least 8 characters)</span></label>
                                                 <span>
-                                                    <input name="Password" id="Password" size="42" type="password" onkeyup="validatePassword();" value=${formData.password} >
-                                                </span> <span class="dw-lc-formerror" id="password_invalid" style="display:none;">The password you entered is not valid.</span> <span class="dw-lc-formconfirm" id="password_valid" style="display:none;">&nbsp;</span> </p>
+                                                    <input name="Password" id="Password" size="42" type="password" value=${formData.password} >
+                                                </span> <span class="dw-lc-formerror" id="password_invalid"></span>
+                                            </p>
                                             <p>
                                                 <label for="RePassword">Verify password:<span class="ibm-required">*</span></label>
                                                 <span>
-                                                    <input name="RePassword" id="RePassword" size="42" type="password" onkeyup="validateRePassword();" value="${formData.rePassword}">
-                                                </span> <span class="dw-lc-formerror" id="repassword_mismatch" style="display:none;">The passwords did not match.</span> <span class="dw-lc-formerror" id="repassword_invalid" style="display:none;">The password you entered is not valid.</span> <span class="dw-lc-formconfirm" id="repassword_valid" style="display:none;">&nbsp;</span> </p>
+                                                    <input name="RePassword" id="RePassword" size="42" type="password" value="${formData.rePassword}">
+                                                </span> <span class="dw-lc-formerror" id="repassword_mismatch"></span>
+                                            </p>
                                             <p>
                                                 <label for="alias">Display name:<span class="ibm-required">*</span><br>
                                                     <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Must be between 3 - 31 characters. <a class="ibm-feature-link" href="https://www.ibm.com/developerworks/dwwi/jsp/Register.jsp?lang=en_US&appname=developerworks&d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Ftopics%2F#overlay2" onclick="ibmweb.overlay.show( & #39; overlay2 & #39; , this); return false;">Tips for choosing display name.</a>) </span> </label>
                                                 <span>
-                                                    <input name="alias" id="alias" size="42" type="text" onkeyup="validateDisplayName();" onblur="checkDisplayname( & #39; alias & #39; );" value=${formData.displayName}>
-                                                </span> <span class="dw-lc-formerror" id="alias_invalid" style="display:none;">This display name is not valid. Please choose another.</span> <span class="dw-lc-formconfirm" id="alias_valid" style="display:none;">&nbsp;</span> </p>
+                                                    <input name="alias" id="alias" size="42" type="text" value=${formData.displayName}>
+                                                </span> <span class="dw-lc-formerror" id="alias_invalid"></span>
+                                            </p>
                                             <!-- SUPPLEMENTAL OVERLAYS START HERE -->
                                             <div class="ibm-common-overlay" id="overlay2">
                                                 <div class="ibm-head">
