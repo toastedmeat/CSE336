@@ -338,8 +338,11 @@
                     $("#alias_invalid").load(url);
                 });
                 
-                $("#CountryOfRes").bind("keydown change", function(){
-                    var queryString = $(this).prop("value");
+                $("#CountryOfRes").click(function(event) {
+                    var queryString = $(this).val();
+                    if(queryString == "Select One"){
+                        queryString="select";
+                    }
                     var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?CountryOfRes=" + queryString;
                     $("#CountryOfRes_invalid").load(url);
                 });
@@ -493,7 +496,7 @@
                                                         <option value="US" ${formData.country == 'US' ? 'selected="selected"' : ''}>United States</option>
                                                     </select>
                                                 </span> 
-                                                    <span class="dw-lc-formerror" id="CountryOfRes_invalid"></span>
+                                                <span class="dw-lc-formerror" id="CountryOfRes_invalid"></span>
                                             </p>
                                             <div class="ibm-columns">
                                                 <div class="ibm-col-2-1">

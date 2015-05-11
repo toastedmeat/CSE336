@@ -200,10 +200,8 @@ public class User implements Serializable{
 
     public String setCountry(String country) {
         String s = "";
-        if(country == null){
-            s = "<span style='color:red'>Please select a Country</span>";
-        } else if(country.equals("Select One")){
-            s = "<span style='color:red'>Please select a Country</span>";
+        if (country.equals("select")){
+            s = "<span style='color:red'>Please select a country</span>";
         } else{
             this.country = country;
             m.put("country", country);

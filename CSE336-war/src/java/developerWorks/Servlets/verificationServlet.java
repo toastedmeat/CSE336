@@ -64,7 +64,7 @@ public class verificationServlet extends HttpServlet {
                     out.println(formData.setDisplayName(request.getParameter(input)));
                 }
                 else if(input.equals("CountryOfRes")){
-                    out.println(formData.setCountry(request.getParameter(input)));
+                    out.println(formData.setCountry(request.getParameter("CountryOfRes")));
                 }
                 else if(input.equals("City")){
                     out.println(formData.setCity(request.getParameter(input)));
