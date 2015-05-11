@@ -302,40 +302,70 @@
         <script src="./js/json-min.js"></script>-->
         <script>
             $(document).ready(function(){
-                $("#FName").blur(function(){
+                $("#FName").keydown(function(){
                     var queryString = $(this).prop("value");
                     var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?first=" + queryString;
                     $("#fName_invalid").load(url);
                 });
                 
-                $("#LName").blur(function(){
+                $("#LName").keydown(function(){
                     var queryString = $(this).prop("value");
                     var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?last=" + queryString;
                     $("#lName_invalid").load(url);
                 });
                 
-                $("#emailAddress").blur(function(){
+                $("#emailAddress").keydown(function(){
                     var queryString = $(this).prop("value");
                     var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?email=" + queryString;
                     $("#userid_invalid").load(url);
                 });
                 
-                $("#Password").blur(function(){
+                $("#Password").keydown(function(){
                     var queryString = $(this).prop("value");
                     var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?password=" + queryString;
                     $("#password_invalid").load(url);
                 });
                 
-                $("#RePassword").blur(function(){
+                $("#RePassword").keydown(function(){
                     var queryString = $(this).prop("value");
                     var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?repassword=" + queryString;
                     $("#repassword_mismatch").load(url);
                 });
                 
-                $("#alias").blur(function(){
+                $("#alias").keydown(function(){
                     var queryString = $(this).prop("value");
                     var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?alias=" + queryString;
                     $("#alias_invalid").load(url);
+                });
+                
+                $("#CountryOfRes").bind("keydown change", function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?CountryOfRes=" + queryString;
+                    $("#CountryOfRes_invalid").load(url);
+                });
+                
+                $("#City").keydown(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?City=" + queryString;
+                    $("#City_invalid").load(url);
+                });
+                
+                $("#Language").keydown(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?Language=" + queryString;
+                    $("#Language_invalid").load(url);
+                });
+                
+                $("#SecurityQues").change(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?SecurityQues=" + queryString;
+                    $("#SecurityQues_invalid").load(url);
+                });
+                
+                $("#SecurityAns").keydown(function(){
+                    var queryString = $(this).prop("value");
+                    var url = "http://localhost:8080/CSE336-war/faces/verificationServlet?SecurityAns=" + queryString;
+                    $("#SecurityAns_invalid").load(url);
                 });
             });
         </script>
@@ -451,10 +481,10 @@
                                             </div>
                                             <!-- SUPPLEMENTAL OVERLAYS END HERE -->
                                             <p>
-                                                <label for="countryResidence">Country/region of residence:<span class="ibm-required">*</span><br>
+                                                <label for="CountryOfRes">Country/region of residence:<span class="ibm-required">*</span><br>
                                                     <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Required for warranty)</span></label>
                                                 <span>
-                                                    <select name="CountryOfRes" id="countryResidence">
+                                                    <select name="CountryOfRes" id="CountryOfRes">
                                                         <option value="Select One" ${formData.country == 'Select One' ? 'selected="selected"' : ''}>Select One</option>
                                                         <option value="AQ" ${formData.country == 'AQ' ? 'selected="selected"' : ''}>Antarctica</option>
                                                         <option value="KY" ${formData.country == 'KY' ? 'selected="selected"' : ''}>Cayman Islands</option>
@@ -462,14 +492,18 @@
                                                         <option value="GB" ${formData.country == 'GB' ? 'selected="selected"' : ''}>United Kingdom</option>
                                                         <option value="US" ${formData.country == 'US' ? 'selected="selected"' : ''}>United States</option>
                                                     </select>
-                                                </span> </p>
+                                                </span> 
+                                                    <span class="dw-lc-formerror" id="CountryOfRes_invalid"></span>
+                                            </p>
                                             <div class="ibm-columns">
                                                 <div class="ibm-col-2-1">
                                                     <p>
                                                         <label for="City">City:</label>
                                                         <span>
                                                             <input name="City" id="City" size="36" type="text" value=${formData.city}>
-                                                        </span> </p>
+                                                        </span> 
+                                                    <span class="dw-lc-formerror" id="City_invalid"></span>
+                                                    </p>
                                                 </div>
                                                 <div class="ibm-col-2-1">
                                                     <p>
@@ -482,7 +516,9 @@
                                                                 <option value="eo-FR" ${formData.language == 'eo-FR' ? 'selected="selected"' : ''}>Esperanto</option>
                                                                 <option value="et-EE" ${formData.language == 'et-EE' ? 'selected="selected"' : ''}>Estonian</option>
                                                             </select>
-                                                        </span> </p>
+                                                        </span> 
+                                                    <span class="dw-lc-formerror" id="Language_invalid"></span>
+                                                    </p>
                                                 </div>
                                             </div>
                                             <p>Please select a security question that only you can answer or create your own. Then enter the answer to the question. Occasionally, you may be asked to answer this question to confirm your identity.</p>
@@ -498,14 +534,18 @@
                                                                 <option value="job" ${formData.securityQuestion == 'job' ? 'selected="selected"' : ''}>In what city or town was your first job?</option>
                                                                 <option value="country" ${formData.securityQuestion == 'country' ? 'selected="selected"' : ''}>In what country were you born?</option>
                                                             </select>
-                                                        </span> </p>
+                                                        </span> 
+                                                    <span class="dw-lc-formerror" id="SecurityQues_invalid"></span>
+                                                    </p>
                                                 </div>
                                             </div>
                                             <p>
                                                 <label for="SecurityAns">Answer to security question:<span class="ibm-required">*</span></label>
                                                 <span>
                                                     <input name="SecurityAns" id="SecurityAns" size="42" type="text" value=${formData.securityAnswer}>
-                                                </span> </p>
+                                                </span> 
+                                            <span class="dw-lc-formerror" id="SecurityAns_invalid"></span>
+                                            </p>
                                             <div class="dw-lc-spacevertical">&nbsp;</div>
                                             <h2 class="ibm-alternate-rule">Privacy preferences</h2>
                                             <div id="privacyid">

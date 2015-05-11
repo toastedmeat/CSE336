@@ -63,6 +63,21 @@ public class verificationServlet extends HttpServlet {
                 else if(input.equals("alias")){
                     out.println(formData.setDisplayName(request.getParameter(input)));
                 }
+                else if(input.equals("CountryOfRes")){
+                    out.println(formData.setCountry(request.getParameter(input)));
+                }
+                else if(input.equals("City")){
+                    out.println(formData.setCity(request.getParameter(input)));
+                }
+                else if(input.equals("Language")){
+                    out.println(formData.setLanguage(request.getParameter(input)));
+                }
+                else if(input.equals("SecurityQues")){
+                    out.println(formData.setSecurityQuestion(request.getParameter(input)));
+                }
+                else if(input.equals("SecurityAns")){
+                    out.println(formData.setSecurityAnswer(request.getParameter(input)));
+                }
             }
             
             sc.setAttribute("formData", formData);

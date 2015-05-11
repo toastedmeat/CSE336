@@ -20,7 +20,7 @@ public class User implements Serializable{
     private String password;
     private String rePassword;
     private String displayName;
-    private String country;
+    private String country = "Select One";
     private String city;
     private String language = "English";
     private String securityQuestion;
@@ -93,9 +93,17 @@ public class User implements Serializable{
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-        m.put("city", city);
+    public String setCity(String city) {
+        String s = "";
+        
+        if(city.equals("")){
+            s = "<span style='color:red'>You must enter a City</span>";
+        } else{
+            this.city = city;
+            m.put("city", city);
+        }
+        
+        return s;
     }
 
     public String getFirstName() {
@@ -190,36 +198,69 @@ public class User implements Serializable{
         return country;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-        m.put("country", country);
+    public String setCountry(String country) {
+        String s = "";
+        if(country == null){
+            s = "<span style='color:red'>Please select a Country</span>";
+        } else if(country.equals("Select One")){
+            s = "<span style='color:red'>Please select a Country</span>";
+        } else{
+            this.country = country;
+            m.put("country", country);
+        }
+        
+        return s;
     }
 
     public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
-        m.put("language", language);
+    public String setLanguage(String language) {
+        String s = "";
+        
+        if(language.equals("")){
+            s = "<span style='color:red'>Please set a Language</span>";
+        } else{
+            this.language = language;
+            m.put("language", language);
+        }
+        
+        return s;
     }
  
     public String getSecurityQuestion() {
         return securityQuestion;
     }
 
-    public void setSecurityQuestion(String securityQuestion) {
-        this.securityQuestion = securityQuestion;
-        m.put("securityQuestion", securityQuestion);
+    public String setSecurityQuestion(String securityQuestion) {
+        String s = "";
+        
+        if(securityQuestion.equals("")){
+            s = "<span style='color:red'>You must enter a security question</span>";
+        } else{
+            this.securityQuestion = securityQuestion;
+            m.put("securityQuestion", securityQuestion);
+        }
+        
+        return s;
     }
 
     public String getSecurityAnswer() {
         return securityAnswer;
     }
 
-    public void setSecurityAnswer(String securityAnswer) {
-        this.securityAnswer = securityAnswer;
-        m.put("securityAnswer", securityAnswer);
+    public String setSecurityAnswer(String securityAnswer) {
+        String s = "";
+        
+        if(securityAnswer.equals("")){
+            s = "<span style='color:red'>You must set an answer to your security question.</span>";
+        } else{
+            this.securityAnswer = securityAnswer;
+            m.put("securityAnswer", securityAnswer);
+        }
+        
+        return s;
     }
 
     public boolean isByEmail() {
@@ -241,7 +282,7 @@ public class User implements Serializable{
     }
     
     public boolean isValid(){
-        return email.isEmpty() ? false : true;
+        return email == null ? false : true;
     }
     
     public Map getProperties(){
